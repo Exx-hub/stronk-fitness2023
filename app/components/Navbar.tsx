@@ -30,7 +30,7 @@ function Navbar() {
             <Link href="/signup">SIGNUP</Link>
           </li>
           <li>
-            <Link href="/siginin">SIGNIN</Link>
+            <Link href="/signin">SIGNIN</Link>
           </li>
           {/* <li>
             <Link href="/logout">LOGOUT</Link>

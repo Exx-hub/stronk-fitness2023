@@ -20,6 +20,10 @@
   }
 }
 
+.error-msg {
+  @apply text-red-500 text-xs;
+}
+
 /* .nav-link {
   @apply text-sm font-medium uppercase text-gray-500;
 } */

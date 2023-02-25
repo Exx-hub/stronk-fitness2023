@@ -6,7 +6,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "deadlift-man": "url('/bg-images/deadliftbg.jpg')",
+      },
+    },
   },
   plugins: [],
 };
