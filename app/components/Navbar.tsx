@@ -31,6 +31,7 @@ function Navbar() {
           </li>
           <li>
             <Link href="/signin">SIGNIN</Link>
+            {/* <button onClick={() => signIn()}>Signin</button> */}
           </li>
           {/* <li>
             <Link href="/logout">LOGOUT</Link>
