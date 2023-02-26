@@ -24,6 +24,10 @@
   @apply text-red-500 text-xs;
 }
 
+.absolute-bottom-center {
+  @apply absolute bottom-12 md:bottom-4 -translate-x-2/4 translate-y-0 left-2/4;
+}
+
 /* .nav-link {
   @apply text-sm font-medium uppercase text-gray-500;
 } */

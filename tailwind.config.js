@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "deadlift-man": "url('/bg-images/deadliftbg.jpg')",
+        "deadlift-man": "url('/bg-images/deadliftbg.png')",
       },
     },
   },
