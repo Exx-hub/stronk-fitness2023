@@ -3,29 +3,19 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function Navbar() {
   const session = useSession();
-  console.log(session);
 
-  const navLinks =
+  const conditionalNavLinks =
     session && session.status === "authenticated" ? (
       <>
-        <li>
-          <Link href="/">HOME</Link>
-        </li>
         <li>
           <Link href="/create">CREATE</Link>
         </li>
         <li>
           <Link href="/history">WOD HX</Link>
-        </li>
-        <li>
-          <Link href="/wod-list">WOD LIST</Link>
-        </li>
-        <li>
-          <Link href="/random-picker">RANDOM</Link>
         </li>
         <li>
           <button onClick={() => signOut()}>SIGNOUT</button>
@@ -34,20 +24,11 @@ function Navbar() {
     ) : (
       <>
         <li>
-          <Link href="/">HOME</Link>
-        </li>
-        <li>
-          <Link href="/wod-list">WOD LIST</Link>
-        </li>
-        <li>
-          <Link href="/random-picker">RANDOM</Link>
-        </li>
-        <li>
           <Link href="/signup">SIGNUP</Link>
         </li>
         <li>
-          <Link href="/signin">SIGNIN</Link>
-          {/* <button onClick={() => signIn()}>Signin</button> */}
+          {/* <Link href="/signin">SIGNIN</Link> */}
+          <button onClick={() => signIn()}>SIGNIN</button>
         </li>
       </>
     );
@@ -59,7 +40,18 @@ function Navbar() {
           <Image src="/stronklogo.png" alt="" height={50} width={50} className="md:w-full" />
           <h1 className="text-lg sm:text-2xl md:text-4xl ml-1 md:ml-2">STRONK</h1>
         </Link>
-        <ul className="hidden md:flex font-semibold space-x-3">{navLinks}</ul>
+        <ul className="hidden md:flex font-semibold space-x-3">
+          <li>
+            <Link href="/">HOME</Link>
+          </li>
+          <li>
+            <Link href="/wod-list">WOD LIST</Link>
+          </li>
+          <li>
+            <Link href="/random-picker">RANDOM</Link>
+          </li>
+          {conditionalNavLinks}
+        </ul>
       </nav>
     </header>
   );

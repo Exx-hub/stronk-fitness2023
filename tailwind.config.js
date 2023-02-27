@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "deadlift-man": "url('/bg-images/deadliftbg.png')",
+        deadlift2: "url('/bg-images/deadlift2.jpg')",
       },
     },
   },

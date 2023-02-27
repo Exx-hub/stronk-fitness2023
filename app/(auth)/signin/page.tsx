@@ -31,7 +31,7 @@ function Signin() {
       };
 
       if (!error && ok) {
-        router.push("/");
+        router.push("/wod-list");
       } else {
         throw new Error();
         // display error toast here
