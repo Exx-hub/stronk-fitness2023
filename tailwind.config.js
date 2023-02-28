@@ -8,8 +8,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "deadlift-man": "url('/bg-images/deadliftbg.png')",
-        deadlift2: "url('/bg-images/deadlift2.jpg')",
+        home: "url('/bg-images/deadliftbg.png')",
+        wodList: "url('/bg-images/gear.jpg')",
+        wodPage: "url('/bg-images/deadlift2.jpg')",
+        // prPage: "url('/bg-images/deadlift2.jpg')",
       },
     },
   },

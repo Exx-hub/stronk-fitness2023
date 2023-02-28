@@ -20,7 +20,7 @@ model User {
 
 model Wod {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  name      String?    @default("Overall Fitness")
+  name      String
   dateDone  DateTime?
   exercises Exercise[]
   user      User?      @relation(fields: [userId], references: [id])

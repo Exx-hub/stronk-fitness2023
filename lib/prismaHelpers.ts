@@ -1,5 +1,5 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { getServerSession, Session } from "next-auth";
+import { getServerSession } from "next-auth";
 import client from "./prisma";
 
 export const getWods = async () => {
@@ -10,14 +10,23 @@ export const getWods = async () => {
   return wods;
 };
 
-export const getWodByUser = async () => {
+export const getWodById = async (id: string) => {
+  const wod = await client.wod.findUnique({ where: { id } });
+
+  if (!wod) {
+    return null;
+  }
+
+  return wod;
+};
+
+export const getUserWods = async () => {
   const session = await getServerSession(authOptions);
 
   if (!session) {
     return null;
   }
 
-  // @ts-ignore
   const userId = session.user?.id;
 
   const userWods = await client.wod.findMany({ where: { userId }, include: { exercises: true } });

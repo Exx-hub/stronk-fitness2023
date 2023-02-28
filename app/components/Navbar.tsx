@@ -12,11 +12,11 @@ function Navbar() {
     session && session.status === "authenticated" ? (
       <>
         <li>
-          <Link href="/create">CREATE</Link>
+          <Link href="/prs">PRS</Link>
         </li>
-        <li>
+        {/* <li>
           <Link href="/history">WOD HX</Link>
-        </li>
+        </li> */}
         <li>
           <button onClick={() => signOut()}>SIGNOUT</button>
         </li>
@@ -47,9 +47,9 @@ function Navbar() {
           <li>
             <Link href="/wod-list">WOD LIST</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/random-picker">RANDOM</Link>
-          </li>
+          </li> */}
           {conditionalNavLinks}
         </ul>
       </nav>
