@@ -28,6 +28,7 @@ function CreateWod() {
 
     console.log(data);
 
+    setWodName("");
     setIsAdding(false);
     router.refresh();
   };
