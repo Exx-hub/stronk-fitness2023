@@ -13,21 +13,13 @@ export const getWods = async () => {
 export const getWodById = async (id: string) => {
   const wod = await client.wod.findUnique({ where: { id }, include: { exercises: true } });
 
-  if (!wod) {
-    return null;
-  }
-
   return wod;
 };
 
 export const getUserWods = async () => {
   const session = await getServerSession(authOptions);
 
-  if (!session) {
-    return null;
-  }
-
-  const userId = session.user?.id;
+  const userId = session?.user?.id;
 
   const userWods = await client.wod.findMany({ where: { userId }, include: { exercises: true } });
 

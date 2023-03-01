@@ -81,7 +81,7 @@ function Wod({ id, name, exercises }: WodProps) {
           />
         ) : (
           <Link
-            href={`/wod-list/${id}`}
+            href={`/wod-list/${id}?id=${id}`}
             className="font-bold uppercase hover:text-slate-600 px-2 text-xl"
           >
             {editedName ? editedName : name}
@@ -103,14 +103,14 @@ function Wod({ id, name, exercises }: WodProps) {
           ) : (
             <h2 className="mb-3 px-2">
               No exercises listed.{" "}
-              <Link href={`/wod-list/${id}`} className="underline font-semibold">
+              <Link href={`/wod-list/${id}?id=${id}`} className="underline font-semibold">
                 Add now!
               </Link>
             </h2>
           )}
 
           <div className="flex items-center justify-between">
-            <Link href={`/wod-list/${id}`}>
+            <Link href={`/wod-list/${id}?id=${id}`}>
               <OpenFile />
             </Link>
             <div className="flex item-center space-x-1">

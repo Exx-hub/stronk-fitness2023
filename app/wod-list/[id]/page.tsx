@@ -1,20 +1,23 @@
+"use client";
+
+import React, { useCallback, useEffect, useState } from "react";
 import ExerciseComponent from "./ExerciseComponent";
-import { getWodById, getWods } from "@/lib/prismaHelpers";
-import React from "react";
 import CreateExercise from "./CreateExercise";
+import { Exercise, Wod } from "@prisma/client";
 
-export async function generateStaticParams() {
-  const wods = await getWods();
+function WodPage({ params }: { params: { id: string } }) {
+  const [wod, setWod] = useState<any>(null);
 
-  return wods.map((wod) => {
-    return {
-      id: wod.id,
-    };
-  });
-}
+  const fetchWods = useCallback(async () => {
+    const result = await fetch(`/api/wods/${params?.id}`);
+    const { data } = await result.json();
 
-async function WodPage({ params }: { params: { id: string } }) {
-  const wod = await getWodById(params.id);
+    setWod(data);
+  }, [params?.id]);
+
+  useEffect(() => {
+    fetchWods();
+  }, [fetchWods, params.id]);
 
   return (
     <section className="h-full relative">
@@ -22,9 +25,9 @@ async function WodPage({ params }: { params: { id: string } }) {
         <div className="w-[90%] md:w-[65%] max-w-2xl mx-auto pt-10 flex flex-col gap-1">
           <h1 className="text-white text-xl md:text-3xl font-bold mb-3">{wod?.name}</h1>
 
-          {wod?.exercises.length ? (
-            wod?.exercises.map((exercise) => (
-              <ExerciseComponent key={exercise.id} exercise={exercise} />
+          {wod?.exercises?.length ? (
+            wod?.exercises.map((exercise: Exercise) => (
+              <ExerciseComponent key={exercise.id} exercise={exercise} fetchWods={fetchWods} />
             ))
           ) : (
             <h2 className="text-white text-sm lg:text-lg">
@@ -33,7 +36,7 @@ async function WodPage({ params }: { params: { id: string } }) {
           )}
 
           <hr className="mt-1" />
-          <CreateExercise wodId={wod?.id} />
+          <CreateExercise wodId={wod?.id} fetchWods={fetchWods} />
         </div>
       </div>
     </section>

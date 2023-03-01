@@ -11,9 +11,10 @@ import Trash from "../../components/heroIcons/Trash";
 
 interface ExerciseProps {
   exercise: Exercise;
+  fetchWods: () => Promise<void>;
 }
 
-function ExerciseItem({ exercise }: ExerciseProps) {
+function ExerciseItem({ exercise, fetchWods }: ExerciseProps) {
   const [isEditing, setIsEditing] = useState(false);
 
   const [editedName, setEditedName] = useState("");
@@ -44,6 +45,7 @@ function ExerciseItem({ exercise }: ExerciseProps) {
 
     console.log(data);
 
+    fetchWods();
     router.refresh();
     setIsEditing(false);
   };
@@ -65,6 +67,7 @@ function ExerciseItem({ exercise }: ExerciseProps) {
 
     console.log(data);
 
+    fetchWods();
     router.refresh();
   };
 
@@ -113,8 +116,8 @@ function ExerciseItem({ exercise }: ExerciseProps) {
         <>
           <ExerciseLabel exercise={exercise} textSize="xl" />
 
-          <div className="flex item-center space-x-1" onClick={handleEdit}>
-            <button className="cursor-pointer">
+          <div className="flex item-center space-x-1">
+            <button className="cursor-pointer" onClick={handleEdit}>
               <Edit />
             </button>
 

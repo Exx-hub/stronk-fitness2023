@@ -6,7 +6,12 @@ import AddIcon from "../../components/heroIcons/AddIcon";
 import Cancel from "../../components/heroIcons/Cancel";
 import Check from "../../components/heroIcons/Check";
 
-function CreateExercise({ wodId }: { wodId: string | undefined }) {
+interface Props {
+  wodId: string | undefined;
+  fetchWods: () => Promise<void>;
+}
+
+function CreateExercise({ wodId, fetchWods }: Props) {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState("");
   const [reps, setReps] = useState("");
@@ -34,6 +39,8 @@ function CreateExercise({ wodId }: { wodId: string | undefined }) {
     setSets("");
     setWeight("");
     setIsEditing(false);
+
+    fetchWods();
     router.refresh();
   };
 
