@@ -1,4 +1,4 @@
-import ExerciseItem from "@/app/components/ExerciseItem";
+import ExerciseComponent from "./ExerciseComponent";
 import { getWodById, getWods } from "@/lib/prismaHelpers";
 import React from "react";
 import CreateExercise from "./CreateExercise";
@@ -24,7 +24,7 @@ async function WodPage({ params }: { params: { id: string } }) {
 
           {wod?.exercises.length ? (
             wod?.exercises.map((exercise) => (
-              <ExerciseItem key={exercise.id} exercise={exercise} withBox />
+              <ExerciseComponent key={exercise.id} exercise={exercise} />
             ))
           ) : (
             <h2 className="text-white text-sm lg:text-lg">

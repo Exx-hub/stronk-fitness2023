@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import AddIcon from "../components/heroIcons/AddIcon";
 import Cancel from "../components/heroIcons/Cancel";
 import Check from "../components/heroIcons/Check";
-import TitleAddEditForm from "../components/TitleAddEditForm";
+import WodAddEditForm from "../components/WodAddEditForm";
 
 function CreateWod() {
   const [isAdding, setIsAdding] = useState(false);
@@ -42,7 +42,7 @@ function CreateWod() {
         <AddIcon />
       </div>
       {isAdding ? (
-        <TitleAddEditForm
+        <WodAddEditForm
           handleSubmit={handleSubmit}
           value={wodName}
           onChange={setWodName}

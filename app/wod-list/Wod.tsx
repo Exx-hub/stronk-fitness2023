@@ -5,14 +5,14 @@ import Link from "next/link";
 import React, { useState } from "react";
 import ArrowDown from "../components/heroIcons/ArrowDown";
 import ArrowUp from "../components/heroIcons/ArrowUp";
-import ExerciseItem from "../components/ExerciseItem";
+
 import OpenFile from "../components/heroIcons/OpenFile";
 import Trash from "../components/heroIcons/Trash";
 import Edit from "../components/heroIcons/Edit";
 import { useRouter } from "next/navigation";
-import Check from "../components/heroIcons/Check";
-import Cancel from "../components/heroIcons/Cancel";
-import TitleAddEditForm from "../components/TitleAddEditForm";
+
+import WodAddEditForm from "../components/WodAddEditForm";
+import ExerciseLabel from "../components/ExerciseLabel";
 
 interface WodProps {
   id: string;
@@ -73,7 +73,7 @@ function Wod({ id, name, exercises }: WodProps) {
     <div className="bg-white border border-gray-300 p-2 rounded-lg flex flex-col w-full mx-auto">
       <div className="flex justify-between">
         {isEditing ? (
-          <TitleAddEditForm
+          <WodAddEditForm
             handleSubmit={handleSubmit}
             value={editedName}
             onChange={setEditedName}
@@ -95,9 +95,9 @@ function Wod({ id, name, exercises }: WodProps) {
       {open && (
         <>
           {exercises.length ? (
-            <ul className="mb-3">
+            <ul className="mb-3 ml-1 text-lg">
               {exercises.map((exercise) => (
-                <ExerciseItem key={exercise.id} exercise={exercise} />
+                <ExerciseLabel key={exercise.id} exercise={exercise} textSize="lg" />
               ))}
             </ul>
           ) : (

@@ -15,7 +15,7 @@ function CreateExercise({ wodId }: { wodId: string | undefined }) {
 
   const router = useRouter();
 
-  const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const result = await fetch("/api/exercises", {
@@ -40,7 +40,7 @@ function CreateExercise({ wodId }: { wodId: string | undefined }) {
   return (
     <div className="bg-transparent text-white border border-gray-300 p-2 rounded-lg flex items-center w-full mx-auto mt-1">
       {isEditing ? (
-        <form className="flex w-full" onSubmit={handleCreate}>
+        <form className="flex w-full" onSubmit={handleSubmit}>
           <div className="text-black">
             <input
               className="border border-gray-300 rounded outline-none px-2 ml-1"
