@@ -15,7 +15,7 @@ function CreateWod() {
   const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const result = await fetch("/api/wods/create", {
+    const result = await fetch("/api/wods", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

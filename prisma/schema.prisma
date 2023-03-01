@@ -35,6 +35,6 @@ model Exercise {
   completed Boolean @default(false)
   weight    String
 
-  Wod   Wod?    @relation(fields: [wodId], references: [id]) // onDelete: cascade
+  Wod   Wod?    @relation(fields: [wodId], references: [id], onDelete: Cascade)
   wodId String? @db.ObjectId
 }
