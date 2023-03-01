@@ -34,10 +34,10 @@ function Navbar() {
     );
 
   return (
-    <header className="border-b">
+    <header className="bg-white">
       <nav className="flex justify-between items-center  px-2 md:px-10 py-3 md:py-5">
         <Link href="/" className="flex items-center">
-          <Image src="/stronklogo.png" alt="" height={50} width={50} className="md:w-full" />
+          <Image src="/stronklogo.png" alt="" height={50} width={50} className="md:w-full h-auto" />
           <h1 className="text-lg sm:text-2xl md:text-4xl ml-1 md:ml-2">STRONK</h1>
         </Link>
         <ul className="hidden md:flex font-semibold space-x-3">

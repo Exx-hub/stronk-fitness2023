@@ -24,8 +24,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const exercise = await client.exercise.create({
     data: {
       name,
-      reps,
-      sets,
+      reps: Number(reps),
+      sets: Number(sets),
       weight,
       Wod: {
         connect: {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import ArrowDown from "../components/heroIcons/ArrowDown";
 import ArrowUp from "../components/heroIcons/ArrowUp";
-import ExerciseComponent from "./Exercise";
+import ExerciseItem from "../components/ExerciseItem";
 
 interface WodProps {
   id: string;
@@ -17,24 +17,34 @@ function Wod({ id, name, exercises }: WodProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-white border border-gray-300 p-2 rounded-lg flex flex-col w-full min-w-[260px] md:w-[65%] xl:w-[45%] mx-auto">
+    <div className="bg-white border border-gray-300 p-2 rounded-lg flex flex-col w-full mx-auto">
       <div className="flex justify-between">
-        <Link href={`/wod-list/${id}`} className="font-bold uppercase hover:text-slate-600">
+        <Link
+          href={`/wod-list/${id}`}
+          className="font-bold uppercase hover:text-slate-600 px-2 text-xl"
+        >
           {name}
         </Link>
-        <div onClick={() => setOpen((prev) => !prev)}>{!open ? <ArrowDown /> : <ArrowUp />}</div>
+        <div onClick={() => setOpen((prev) => !prev)} className="cursor-pointer">
+          {!open ? <ArrowDown /> : <ArrowUp />}
+        </div>
       </div>
 
       {open && (
         <>
           {exercises.length ? (
             <ul className="mb-3">
-              {exercises.map((e) => (
-                <ExerciseComponent key={e.id} exercise={e} />
+              {exercises.map((exercise) => (
+                <ExerciseItem key={exercise.id} exercise={exercise} />
               ))}
             </ul>
           ) : (
-            <h2 className="mb-3">No exercise registered for this WOD yet.</h2>
+            <h2 className="mb-3 px-2">
+              No exercises listed.{" "}
+              <Link href={`/wod-list/${id}`} className="underline font-semibold">
+                Add now!
+              </Link>
+            </h2>
           )}
 
           <Link href={`/wod-list/${id}`} className="ml-auto">

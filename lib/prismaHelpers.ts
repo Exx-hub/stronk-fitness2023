@@ -11,7 +11,7 @@ export const getWods = async () => {
 };
 
 export const getWodById = async (id: string) => {
-  const wod = await client.wod.findUnique({ where: { id } });
+  const wod = await client.wod.findUnique({ where: { id }, include: { exercises: true } });
 
   if (!wod) {
     return null;
