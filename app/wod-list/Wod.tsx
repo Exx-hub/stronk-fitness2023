@@ -10,6 +10,9 @@ import OpenFile from "../components/heroIcons/OpenFile";
 import Trash from "../components/heroIcons/Trash";
 import Edit from "../components/heroIcons/Edit";
 import { useRouter } from "next/navigation";
+import Check from "../components/heroIcons/Check";
+import Cancel from "../components/heroIcons/Cancel";
+import TitleAddEditForm from "../components/TitleAddEditForm";
 
 interface WodProps {
   id: string;
@@ -19,6 +22,9 @@ interface WodProps {
 
 function Wod({ id, name, exercises }: WodProps) {
   const [open, setOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [editedName, setEditedName] = useState("");
 
   const router = useRouter();
 
@@ -34,15 +40,53 @@ function Wod({ id, name, exercises }: WodProps) {
     router.refresh();
   };
 
+  const handleEdit = () => {
+    setEditedName(name);
+    setIsEditing(true);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const result = await fetch(`/api/wods/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: editedName }),
+    });
+
+    const data = await result.json();
+
+    console.log(data);
+
+    setIsEditing(false);
+    router.refresh();
+  };
+
+  const handleCancel = () => {
+    setEditedName("");
+    setIsEditing(false);
+  };
+
   return (
     <div className="bg-white border border-gray-300 p-2 rounded-lg flex flex-col w-full mx-auto">
       <div className="flex justify-between">
-        <Link
-          href={`/wod-list/${id}`}
-          className="font-bold uppercase hover:text-slate-600 px-2 text-xl"
-        >
-          {name}
-        </Link>
+        {isEditing ? (
+          <TitleAddEditForm
+            handleSubmit={handleSubmit}
+            value={editedName}
+            onChange={setEditedName}
+            onCancel={handleCancel}
+          />
+        ) : (
+          <Link
+            href={`/wod-list/${id}`}
+            className="font-bold uppercase hover:text-slate-600 px-2 text-xl"
+          >
+            {editedName ? editedName : name}
+          </Link>
+        )}
         <div onClick={() => setOpen((prev) => !prev)} className="cursor-pointer">
           {!open ? <ArrowDown /> : <ArrowUp />}
         </div>
@@ -70,7 +114,7 @@ function Wod({ id, name, exercises }: WodProps) {
               <OpenFile />
             </Link>
             <div className="flex item-center space-x-1">
-              <button className="cursor-pointer">
+              <button className="cursor-pointer" onClick={handleEdit}>
                 <Edit />
               </button>
 
