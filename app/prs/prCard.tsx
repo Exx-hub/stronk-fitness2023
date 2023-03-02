@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import Cancel from "../components/heroIcons/Cancel";
 import Check from "../components/heroIcons/Check";
 import Edit from "../components/heroIcons/Edit";
+import Star from "../components/heroIcons/Star";
+import StarOutline from "../components/heroIcons/StarOutline";
 import Trash from "../components/heroIcons/Trash";
 
 interface Props {
@@ -61,6 +63,23 @@ function PrCard(props: Props) {
     router.refresh();
   };
 
+  const handleToggle = async () => {
+    console.log("favorite?", props.favorite);
+
+    const result = await fetch(`/api/prs/favorite`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ favorite: !props.favorite, prId: props.id }),
+    });
+
+    const data = await result.json();
+
+    console.log(data);
+    router.refresh();
+  };
+
   return (
     <div className="flex items-center justify-between bg-white rounded p-2 min-w-[324px]">
       {isEditing ? (
@@ -86,8 +105,11 @@ function PrCard(props: Props) {
       ) : (
         <>
           <div className="flex items-center">
-            <h2 className="font-semibold mx-1">{props.name}</h2>
-            <p className="ml-2">{props.weight}</p>
+            <div className="text-amber-700 cursor-pointer" onClick={handleToggle}>
+              {props.favorite ? <Star /> : <StarOutline />}
+            </div>
+            <h2 className="font-semibold mx-1 translate-y-[2px]">{props.name}</h2>
+            <p className="ml-2 translate-y-[2px]">{props.weight}</p>
           </div>
           <div className="flex items-center justify-end space-x-1">
             <button className="cursor-pointer" onClick={handleEdit}>
