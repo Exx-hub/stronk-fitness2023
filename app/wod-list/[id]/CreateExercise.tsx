@@ -44,8 +44,16 @@ function CreateExercise({ wodId, fetchWods }: Props) {
     router.refresh();
   };
 
+  const handleCancel = () => {
+    setName("");
+    setReps("");
+    setSets("");
+    setWeight("");
+    setIsEditing(false);
+  };
+
   return (
-    <div className="bg-transparent text-white border border-gray-300 p-2 rounded-lg flex items-center w-full mx-auto mt-1">
+    <div className="bg-transparent text-white border border-gray-300 p-2 rounded-lg flex items-center w-full mx-auto mt-1 min-w-[324px]">
       {isEditing ? (
         <form className="flex w-full" onSubmit={handleSubmit}>
           <div className="text-black">
@@ -80,7 +88,7 @@ function CreateExercise({ wodId, fetchWods }: Props) {
             <button>
               <Check />
             </button>
-            <button type="button" onClick={() => setIsEditing(false)}>
+            <button type="button" onClick={handleCancel}>
               <Cancel />
             </button>
           </div>

@@ -16,6 +16,7 @@ async function WodList() {
       <div className="h-full bg-wodList bg-cover bg-center">
         <div className="w-[90%] md:w-[65%] max-w-2xl mx-auto pt-10 flex flex-col gap-1">
           {wods && wods.map((wod) => <Wod {...wod} key={wod.id} />)}
+          <hr className="my-1" />
           <CreateWod />
         </div>
       </div>

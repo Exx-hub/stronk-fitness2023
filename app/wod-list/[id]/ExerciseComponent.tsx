@@ -72,7 +72,7 @@ function ExerciseItem({ exercise, fetchWods }: ExerciseProps) {
   };
 
   return (
-    <li className="flex items-center justify-between space-x-2  bg-white rounded px-2 py-3 cursor-pointer min-w-[344px]">
+    <li className="flex items-center justify-between space-x-2  bg-white rounded px-2 py-3 cursor-pointer min-w-[324px]">
       {isEditing ? (
         <form className="flex w-full" onSubmit={handleSubmit}>
           <div className="text-black">

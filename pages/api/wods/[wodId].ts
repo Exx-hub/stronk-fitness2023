@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import client from "@/lib/prisma";
+import { getToken } from "next-auth/jwt";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const wodId = req.query.wodId as string;

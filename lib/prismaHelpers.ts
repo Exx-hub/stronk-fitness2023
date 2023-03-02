@@ -1,6 +1,27 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
+
 import client from "./prisma";
+
+export const getPrsByUser = async () => {
+  const session = await getServerSession(authOptions);
+
+  const userId = session?.user?.id;
+
+  const prs = await client.pR.findMany({ where: { userId } });
+
+  return prs;
+};
+
+export const getUserPrs = async () => {
+  const session = await getServerSession(authOptions);
+
+  const userId = session?.user?.id;
+
+  const user = await client.user.findUnique({ where: { id: userId }, include: { PR: true } });
+
+  return user;
+};
 
 export const getWods = async () => {
   const wods = await client.wod.findMany({

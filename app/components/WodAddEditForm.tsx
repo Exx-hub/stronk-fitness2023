@@ -9,9 +9,9 @@ function TitleAddEditForm(props: {
   onCancel: () => void;
 }) {
   return (
-    <form className="flex space-x-4" onSubmit={props.handleSubmit}>
+    <form className="flex space-x-2" onSubmit={props.handleSubmit}>
       <input
-        className="border border-gray-300 rounded outline-none px-2 ml-2 text-black"
+        className="border border-gray-300 rounded outline-none px-2 ml-2 text-black max-w-[200px] sm:max-w-none"
         value={props.value}
         onChange={(e) => props.onChange(e.target.value)}
         placeholder="Enter WOD Name..."

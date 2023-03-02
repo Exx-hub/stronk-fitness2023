@@ -34,11 +34,12 @@ function CreateWod() {
   };
 
   const handleCancel = () => {
+    setWodName("");
     setIsAdding(false);
   };
 
   return (
-    <div className="bg-transparent border border-gray-300 p-2 rounded-lg flex items-center w-full mx-auto text-white">
+    <div className="bg-transparent border border-gray-300 p-2 rounded-lg flex items-center w-full mx-auto min-w-[337px] text-white">
       <div onClick={() => setIsAdding((prev) => !prev)} className="cursor-pointer">
         <AddIcon />
       </div>
