@@ -21,7 +21,7 @@
 }
 
 .error-msg {
-  @apply text-red-500 text-xs;
+  @apply text-red-500 text-sm;
 }
 
 .absolute-bottom-center {
