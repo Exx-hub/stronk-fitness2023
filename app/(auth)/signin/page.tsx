@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -18,9 +18,12 @@ function Signin() {
     formState: { errors },
   } = useForm<Inputs>();
 
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
+    setLoading(true);
     try {
       const result = await signIn("credentials", { email, password, redirect: false });
 
@@ -30,6 +33,8 @@ function Signin() {
         status: number;
       };
 
+      // setLoading(false); // state is cleared anyway when component is unmounted,
+      // so i think it's okay to leave loading to true since user is routed to a diff page.
       if (!error && ok) {
         router.push("/wod-list");
       } else {
@@ -81,7 +86,7 @@ function Signin() {
             {errors.password && <span className="error-msg">{errors.password?.message}</span>}
 
             <button className="bg-black text-white w-[95%] py-2 rounded mt-2 hover:bg-[#333]">
-              Sign In
+              {loading ? "Please wait.." : "Sign In"}
             </button>
           </form>
         </div>

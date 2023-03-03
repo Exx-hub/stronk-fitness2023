@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type Inputs = {
@@ -19,22 +19,30 @@ function Signup() {
     formState: { errors },
   } = useForm<Inputs>();
 
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
   const onSubmit: SubmitHandler<Inputs> = async ({ email, name, password, confirm }) => {
-    const result = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, name, password, confirm }),
-    });
+    setLoading(true);
+    try {
+      const result = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, name, password, confirm }),
+      });
 
-    const data = await result.json();
+      const data = await result.json();
 
-    console.log(data);
+      console.log(data);
 
-    router.push("/signin");
+      // setLoading(false);
+      router.push("/signin");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -106,9 +114,8 @@ function Signup() {
             )}
 
             <button className="bg-black text-white w-[95%] py-2 rounded mt-2 hover:bg-[#333]">
-              Signup
+              {loading ? "Please wait.." : "Sign Up"}
             </button>
-            {/* {loading ? "Please wait..." : "Register"} */}
           </form>
         </div>
       </div>
