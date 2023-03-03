@@ -1,12 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import Burger from "./heroIcons/Burger";
+import ArrowUp from "./heroIcons/ArrowUp";
+import CloseMenu from "./heroIcons/CloseMenu";
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
   const session = useSession();
 
   const pathName = usePathname();
@@ -49,7 +54,21 @@ function Navbar() {
 
           {conditionalNavLinks}
         </ul>
+
+        <div className="md:hidden cursor-pointer" onClick={() => setOpen((prev) => !prev)}>
+          {open ? <CloseMenu /> : <Burger />}
+        </div>
       </nav>
+
+      {open && (
+        <ul className="md:hidden flex justify-center items-center space-x-2">
+          <li className={pathName === "/" ? "text-black" : "text-[#7f7f7f]"}>
+            <Link href="/">HOME</Link>
+          </li>
+
+          {conditionalNavLinks}
+        </ul>
+      )}
     </header>
   );
 }

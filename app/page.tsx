@@ -1,4 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
+import FootBar from "./components/FootBar";
+import DownOutlined from "./components/heroIcons/DownOutlined";
+import Navbar from "./components/Navbar";
 import GetStarted from "./GetStarted";
 import TodaysWod from "./TodaysWod";
 
@@ -17,8 +21,17 @@ export default function Home() {
           <GetStarted />
         </div>
 
-        <TodaysWod />
+        <Link
+          href="#today"
+          className="flex flex-col items-center text-white text-sm md:text-xl font-semibold absolute-bottom-center"
+        >
+          <div>TODAY&apos;S WOD</div>
+          <DownOutlined />
+        </Link>
       </div>
+
+      {/* <TodaysWod /> */}
+      {/* <FootBar /> */}
     </section>
   );
 }

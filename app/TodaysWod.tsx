@@ -1,16 +1,12 @@
-import Link from "next/link";
 import React from "react";
-import DownOutlined from "./components/heroIcons/DownOutlined";
 
 function TodaysWod() {
   return (
-    <Link
-      href="#today"
-      className="flex flex-col items-center text-white text-sm md:text-xl font-semibold absolute-bottom-center"
-    >
-      <div>TODAY&apos;S WOD</div>
-      <DownOutlined />
-    </Link>
+    <section className="h-full">
+      <div className="h-full bg-wodToday bg-cover bg-center">
+        <div className="w-[90%] md:w-[65%] max-w-2xl mx-auto pt-10 flex flex-col gap-1"></div>
+      </div>
+    </section>
   );
 }
 

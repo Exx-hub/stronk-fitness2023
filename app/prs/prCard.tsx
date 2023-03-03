@@ -94,7 +94,12 @@ function PrCard(props: Props) {
             />
           </div>
           <div className="flex items-center space-x-1 ml-3">
-            <button type="button" onClick={handleSubmit}>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={!editedWeight}
+              className={editedWeight ? "cursor-pointer" : "cursor-not-allowed"}
+            >
               <Check />
             </button>
             <button type="button" onClick={handleCancel}>

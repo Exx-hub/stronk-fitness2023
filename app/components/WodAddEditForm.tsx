@@ -16,7 +16,11 @@ function TitleAddEditForm(props: {
         onChange={(e) => props.onChange(e.target.value)}
         placeholder="Enter WOD Name..."
       />
-      <button type="submit">
+      <button
+        type="submit"
+        disabled={!props.value}
+        className={props.value ? "cursor-pointer" : "cursor-not-allowed"}
+      >
         <Check />
       </button>
       <button type="button" onClick={() => props.onCancel()}>

@@ -6,7 +6,7 @@ import Wod from "./Wod";
 async function WodList() {
   const wods = await getUserWods();
 
-  console.log("wods", wods);
+  // console.log("wods", wods);
 
   return (
     <section className="h-full">

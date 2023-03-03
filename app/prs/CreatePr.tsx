@@ -41,6 +41,13 @@ function CreatePr() {
     setIsAdding(false);
   };
 
+  let buttonDisabled;
+  if (!name || !weight) {
+    buttonDisabled = true;
+  } else {
+    buttonDisabled = false;
+  }
+
   return (
     <div className="bg-transparent border border-gray-300 p-2 rounded-lg flex items-center w-full mx-auto text-white min-w-[324px]">
       <div onClick={() => setIsAdding((prev) => !prev)} className="cursor-pointer">
@@ -61,7 +68,11 @@ function CreatePr() {
             onChange={(e) => setWeight(e.target.value)}
           />
           <div className="flex items-center space-x-1 ml-3">
-            <button type="submit">
+            <button
+              type="submit"
+              disabled={buttonDisabled}
+              className={!buttonDisabled ? "cursor-pointer" : "cursor-not-allowed"}
+            >
               <Check />
             </button>
             <button type="button" onClick={handleCancel}>

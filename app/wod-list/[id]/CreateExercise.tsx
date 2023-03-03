@@ -20,6 +20,13 @@ function CreateExercise({ wodId, fetchWods }: Props) {
 
   const router = useRouter();
 
+  let buttonDisabled;
+  if (!name || !reps || !sets || !weight) {
+    buttonDisabled = true;
+  } else {
+    buttonDisabled = false;
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -85,7 +92,10 @@ function CreateExercise({ wodId, fetchWods }: Props) {
             </div>
           </div>
           <div className="flex items-center ml-auto space-x-1 md:space-x-2">
-            <button>
+            <button
+              disabled={buttonDisabled}
+              className={!buttonDisabled ? "cursor-pointer" : "cursor-not-allowed"}
+            >
               <Check />
             </button>
             <button type="button" onClick={handleCancel}>

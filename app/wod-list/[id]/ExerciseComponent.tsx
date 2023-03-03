@@ -24,6 +24,13 @@ function ExerciseItem({ exercise, fetchWods }: ExerciseProps) {
 
   const router = useRouter();
 
+  let buttonDisabled;
+  if (!editedName || !editedReps || !editedSets || !editedWeight) {
+    buttonDisabled = true;
+  } else {
+    buttonDisabled = false;
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log({ name: editedName, reps: editedReps, sets: editedSets, weight: editedWeight });
@@ -86,7 +93,7 @@ function ExerciseItem({ exercise, fetchWods }: ExerciseProps) {
               <input
                 className="border border-gray-300 rounded outline-none px-2 ml-1 w-16"
                 value={editedReps}
-                onChange={(e) => setEditedReps + e.target.value}
+                onChange={(e) => setEditedReps(+e.target.value)}
                 placeholder="Reps"
               />
               <input
@@ -104,7 +111,10 @@ function ExerciseItem({ exercise, fetchWods }: ExerciseProps) {
             </div>
           </div>
           <div className="flex items-center ml-auto space-x-1 md:space-x-2">
-            <button>
+            <button
+              disabled={buttonDisabled}
+              className={!buttonDisabled ? "cursor-pointer" : "cursor-not-allowed"}
+            >
               <Check />
             </button>
             <button type="button" onClick={() => setIsEditing(false)}>
