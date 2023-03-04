@@ -23,12 +23,27 @@ export const getUserPrs = async () => {
   return user;
 };
 
-export const getWods = async () => {
+export const getAllWods = async () => {
   const wods = await client.wod.findMany({
     include: { exercises: true },
   });
 
   return wods;
+};
+
+export const getRandomWod = async () => {
+  const wods = await getAllWods();
+
+  const min = 0;
+  const max = wods.length - 1;
+
+  const random = Math.floor(Math.random() * (max - min + 1)) + min;
+
+  const randomWod = wods[random];
+
+  const user = await client.user.findUnique({ where: { id: randomWod.userId } });
+
+  return { user: user?.name, randomWod };
 };
 
 export const getWodById = async (id: string) => {

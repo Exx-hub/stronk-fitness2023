@@ -1,6 +1,5 @@
-import { getPrsByUser } from "@/lib/prismaHelpers";
-
 import React from "react";
+import { getPrsByUser } from "@/lib/prismaHelpers";
 import Star from "../components/heroIcons/Star";
 
 import CreatePr from "./CreatePr";

@@ -3,14 +3,12 @@ import React from "react";
 
 interface Props {
   exercise: Exercise;
-  checkBox?: boolean;
   textSize: "lg" | "xl" | "2xl";
 }
 
-function ExerciseLabel({ exercise, checkBox, textSize }: Props) {
+function ExerciseLabel({ exercise, textSize }: Props) {
   return (
     <div className={`flex flex-col sm:flex-row items-start sm:items-center text-${textSize}`}>
-      {/* {withBox && <input type="checkbox" defaultChecked={exercise.completed} ref={checkboxref} />} */}
       <h2 className="font-semibold mx-1">{exercise.name}</h2>
       <p>
         || {exercise.sets}x{exercise.reps} || {exercise.weight}

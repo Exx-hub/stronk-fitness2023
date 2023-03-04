@@ -14,6 +14,7 @@ module.exports = {
         prPage: "url('/bg-images/barbell3.jpg')",
         todaysWod: "url('/bg-images/motivation.jpg')",
         whiteBoard: "url('/whiteboard.png')",
+        verticalBoard: "url('/verticalBoard.png')",
       },
     },
   },

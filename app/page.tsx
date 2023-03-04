@@ -1,12 +1,16 @@
+import { getRandomWod } from "@/lib/prismaHelpers";
 import Image from "next/image";
-import Link from "next/link";
+
 import FootBar from "./components/FootBar";
 import DownOutlined from "./components/heroIcons/DownOutlined";
-import Navbar from "./components/Navbar";
 import GetStarted from "./GetStarted";
 import TodaysWod from "./TodaysWod";
 
-export default function Home() {
+export default async function Home() {
+  const { user, randomWod } = await getRandomWod();
+
+  console.log({ user, randomWod });
+
   return (
     <section className="h-full relative bg-black">
       <div className="h-full bg-home bg-cover bg-center bg-no-repeat">
@@ -23,14 +27,14 @@ export default function Home() {
 
         <a
           href="#today"
-          className="flex flex-col items-center text-white text-sm md:text-xl font-semibold absolute-bottom-center"
+          className="flex flex-col items-center text-white text-sm md:text-xl font-semibold absolute-bottom-center z-50"
         >
           <div>TODAY&apos;S WOD</div>
           <DownOutlined />
         </a>
       </div>
 
-      <TodaysWod />
+      <TodaysWod createdBy={user} name={randomWod.name} exercises={randomWod.exercises} />
       <FootBar />
     </section>
   );
