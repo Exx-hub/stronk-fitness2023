@@ -12,7 +12,7 @@ module.exports = {
         wodList: "url('/bg-images/gear.jpg')",
         wodPage: "url('/bg-images/deadlift2.jpg')",
         prPage: "url('/bg-images/barbell3.jpg')",
-        wodToday: "url('/bg-images/motivation.jpg')",
+        todaysWod: "url('/bg-images/motivation.jpg')",
         whiteBoard: "url('/whiteboard.png')",
       },
     },

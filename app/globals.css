@@ -28,6 +28,10 @@
   @apply absolute bottom-12 md:bottom-4 -translate-x-2/4 translate-y-0 left-2/4;
 }
 
+.footer-icons {
+  @apply text-[#808080] hover:text-white hover:scale-125 transition ease-out duration-300;
+}
+
 /* .nav-link {
   @apply text-sm font-medium uppercase text-gray-500;
 } */

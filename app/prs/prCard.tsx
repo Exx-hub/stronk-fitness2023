@@ -64,8 +64,6 @@ function PrCard(props: Props) {
   };
 
   const handleToggle = async () => {
-    console.log("favorite?", props.favorite);
-
     const result = await fetch(`/api/prs/favorite`, {
       method: "PATCH",
       headers: {

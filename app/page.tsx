@@ -21,17 +21,17 @@ export default function Home() {
           <GetStarted />
         </div>
 
-        <Link
+        <a
           href="#today"
           className="flex flex-col items-center text-white text-sm md:text-xl font-semibold absolute-bottom-center"
         >
           <div>TODAY&apos;S WOD</div>
           <DownOutlined />
-        </Link>
+        </a>
       </div>
 
-      {/* <TodaysWod /> */}
-      {/* <FootBar /> */}
+      <TodaysWod />
+      <FootBar />
     </section>
   );
 }
