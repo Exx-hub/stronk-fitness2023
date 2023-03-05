@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
-    return res.status(401).json({ message: "Forbidden." });
+    return res.status(401).json({ message: "Unauthorized." });
   }
 
   const wod = await client.wod.create({

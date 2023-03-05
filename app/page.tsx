@@ -9,8 +9,6 @@ import TodaysWod from "./TodaysWod";
 export default async function Home() {
   const { user, randomWod } = await getRandomWod();
 
-  console.log({ user, randomWod });
-
   return (
     <section className="h-full relative bg-black">
       <div className="h-full bg-home bg-cover bg-center bg-no-repeat">

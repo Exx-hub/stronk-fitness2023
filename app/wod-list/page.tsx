@@ -2,8 +2,17 @@ import React from "react";
 import { getUserWods } from "@/lib/prismaHelpers";
 import CreateWod from "./CreateWod";
 import Wod from "./Wod";
+import { getServerSession } from "next-auth";
+import Protected from "../components/Protected";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 async function WodList() {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return <Protected />;
+  }
+
   const wods = await getUserWods();
 
   // console.log("wods", wods);

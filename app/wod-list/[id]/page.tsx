@@ -4,8 +4,12 @@ import React, { useCallback, useEffect, useState } from "react";
 import ExerciseComponent from "./ExerciseComponent";
 import CreateExercise from "./CreateExercise";
 import { Exercise, Wod } from "@prisma/client";
+import { useSession } from "next-auth/react";
+import Protected from "@/app/components/Protected";
 
 function WodPage({ params }: { params: { id: string } }) {
+  const { data, status } = useSession();
+
   const [wod, setWod] = useState<any>(null);
 
   const fetchWods = useCallback(async () => {
@@ -18,6 +22,14 @@ function WodPage({ params }: { params: { id: string } }) {
   useEffect(() => {
     fetchWods();
   }, [fetchWods, params.id]);
+
+  if (status === "loading") {
+    return <h2 className="text-center">Loading...</h2>;
+  }
+
+  if (status === "unauthenticated") {
+    return <Protected />;
+  }
 
   return (
     <section className="h-full relative">

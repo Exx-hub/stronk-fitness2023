@@ -4,8 +4,17 @@ import Star from "../components/heroIcons/Star";
 
 import CreatePr from "./CreatePr";
 import PrCard from "./prCard";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import Protected from "../components/Protected";
 
 async function PrPage() {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return <Protected />;
+  }
+
   const prs = await getPrsByUser();
 
   return (
