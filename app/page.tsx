@@ -28,7 +28,9 @@ export default async function Home() {
           className="flex flex-col items-center text-white text-sm md:text-xl font-semibold absolute-bottom-center z-50"
         >
           <div>TODAY&apos;S WOD</div>
-          <DownOutlined />
+          <div className="animate-pulse">
+            <DownOutlined />
+          </div>
         </a>
       </div>
 

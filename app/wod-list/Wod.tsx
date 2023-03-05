@@ -93,7 +93,7 @@ function Wod({ id, name, exercises }: WodProps) {
       </div>
 
       {open && (
-        <>
+        <div className="animate-fade-in">
           {exercises.length ? (
             <ul className="mb-3 ml-1 text-lg">
               {exercises.map((exercise) => (
@@ -123,7 +123,7 @@ function Wod({ id, name, exercises }: WodProps) {
               </button>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

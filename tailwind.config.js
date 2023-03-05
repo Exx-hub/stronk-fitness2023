@@ -16,6 +16,20 @@ module.exports = {
         whiteBoard: "url('/whiteboard.png')",
         verticalBoard: "url('/verticalBoard.png')",
       },
+      keyframes: {
+        slide: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+        "fade-in": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+      },
+      animation: {
+        slide: "slide 500ms ease-in-out",
+        "fade-in": "fade-in 500ms ease-in",
+      },
     },
   },
   plugins: [],
