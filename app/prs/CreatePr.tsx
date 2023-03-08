@@ -49,7 +49,7 @@ function CreatePr() {
   }
 
   return (
-    <div className="bg-transparent border border-gray-300 p-2 rounded-lg flex items-center w-full mx-auto text-white min-w-[324px]">
+    <div className="bg-transparent border border-gray-300 p-2 rounded-lg flex items-center w-full mx-auto text-white min-w-[324px] mb-10 lg:mb-0">
       <div onClick={() => setIsAdding((prev) => !prev)} className="cursor-pointer">
         <AddIcon />
       </div>
