@@ -43,6 +43,8 @@ export const getRandomWod = async () => {
 
   const user = await client.user.findUnique({ where: { id: randomWod.userId } });
 
+  console.log("random-wod generated");
+
   return { user: user?.name, randomWod };
 };
 
