@@ -6,6 +6,9 @@ import DownOutlined from "./components/heroIcons/DownOutlined";
 import GetStarted from "./GetStarted";
 import TodaysWod from "./TodaysWod";
 
+export const dynamic = "force-dynamic";
+// export const revalidate = 10;
+
 export default async function Home() {
   const { user, randomWod } = await getRandomWod();
 
