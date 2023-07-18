@@ -8,12 +8,12 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        home: "url('/bg-images/deadliftbg.png')",
+        home: "url('/bg-images/deadliftbg.jpg')",
         wodList: "url('/bg-images/gear.jpg')",
         wodPage: "url('/bg-images/deadlift2.jpg')",
         prPage: "url('/bg-images/barbell3.jpg')",
         todaysWod: "url('/bg-images/motivation.jpg')",
-        whiteBoard: "url('/whiteboard.png')",
+        whiteBoard: "url('/whiteboard.jpg')",
         verticalBoard: "url('/verticalBoard.png')",
       },
       keyframes: {

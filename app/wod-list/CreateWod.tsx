@@ -3,8 +3,6 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import AddIcon from "../components/heroIcons/AddIcon";
-import Cancel from "../components/heroIcons/Cancel";
-import Check from "../components/heroIcons/Check";
 import WodAddEditForm from "../components/WodAddEditForm";
 
 function CreateWod() {

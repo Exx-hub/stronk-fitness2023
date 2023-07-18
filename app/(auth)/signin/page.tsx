@@ -33,16 +33,18 @@ function Signin() {
         status: number;
       };
 
-      // setLoading(false); // state is cleared anyway when component is unmounted,
-      // so i think it's okay to leave loading to true since user is routed to a diff page.
+      setLoading(false);
+
       if (!error && ok) {
         router.push("/wod-list");
       } else {
-        throw new Error();
-        // display error toast here
+        throw new Error(error);
       }
     } catch (err) {
       console.log(err);
+      alert(err);
+      // display error toast here
+      setLoading(false);
     }
   };
 

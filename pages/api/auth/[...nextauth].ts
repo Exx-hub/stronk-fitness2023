@@ -23,7 +23,7 @@ export const authOptions: NextAuthOptions = {
         const verified = await bcyrpt.compare(password, userExists.password);
 
         if (!verified) {
-          throw new Error("Passwrd not valid.");
+          throw new Error("Password not valid.");
         }
 
         return userExists;
