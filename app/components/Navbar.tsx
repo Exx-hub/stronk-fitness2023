@@ -41,7 +41,7 @@ function Navbar() {
     );
 
   return (
-    <header className="bg-white border-b">
+    <header className="bg-white border-b relative">
       <nav className="flex justify-between items-center  px-2 md:px-10 py-3 md:py-5">
         <Link href="/" className="flex items-center">
           <Image src="/stronklogo.png" alt="" height={50} width={50} className="md:w-auto h-auto" />
@@ -60,15 +60,19 @@ function Navbar() {
         </div>
       </nav>
 
-      {open && (
-        <ul className="md:hidden flex justify-center items-center space-x-2">
-          <li className={pathName === "/" ? "text-black" : "text-[#7f7f7f]"}>
-            <Link href="/">HOME</Link>
-          </li>
+      {/* toggle opacity, position absolute, adjust position with translate */}
+      {/* its always there, but if not open, just has opacity 0. so when opacity changes to 1, transition effect works */}
+      <ul
+        className={`flex absolute translate-y-full w-full bottom-0 z-50 bg-white md:hidden justify-center items-center space-x-2 transition-all duration-300 ease-[ease-in]  ${
+          open ? "opacity-100" : "opacity-0"
+        } `}
+      >
+        <li className={pathName === "/" ? "text-black" : "text-[#7f7f7f]"}>
+          <Link href="/">HOME</Link>
+        </li>
 
-          {conditionalNavLinks}
-        </ul>
-      )}
+        {conditionalNavLinks}
+      </ul>
     </header>
   );
 }

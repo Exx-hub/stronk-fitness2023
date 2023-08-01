@@ -25,7 +25,7 @@
 }
 
 .absolute-bottom-center {
-  @apply absolute bottom-12 md:bottom-4 -translate-x-2/4 translate-y-0 left-2/4;
+  @apply absolute bottom-20 md:bottom-72 xl:bottom-64 2xl:bottom-12 -translate-x-2/4 translate-y-0 left-2/4;
 }
 
 .footer-icons {
